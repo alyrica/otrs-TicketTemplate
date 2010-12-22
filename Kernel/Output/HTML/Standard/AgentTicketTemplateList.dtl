@@ -31,7 +31,7 @@
                     <tbody>
 <!-- dtl:block:NoTemplates -->
                         <tr>
-                            <td colspan="4">$Text{"No matches found."}</td>
+                            <td colspan="3">$Text{"No matches found."}</td>
                         </tr>
 <!-- dtl:block:NoTemplates -->
 <!-- dtl:block:TemplateRow -->
