@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <Name>TicketTemplate</Name>
+    <Version>0.0.0</Version>
+    <Framework>3.0.x</Framework>
+    <Vendor>Renee Baecker, Perl-Services.de</Vendor>
+    <URL>http://perl-services.de/</URL>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <Description Lang="en">A module to create ticket templates and tickets based on the templates.</Description>
+    <Description Lang="de">Ein Modul, um Ticket Templates und darauf basierende Tickets zu erstellen.</Description>
+    <Filelist>
+        <File Permission="644" Location="Kernel/Config/Files/TicketTemplate.xml"/>
+        <!-- <File Permission="644" Location="Kernel/Language/de_TicketTemplate.pm"/> -->
+        <File Permission="644" Location="Kernel/Modules/AgentTicketTemplate.pm"/>
+        <File Permission="644" Location="Kernel/Output/HTML/OutputFilterTicketTemplate.pm"/>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentTicketTemplateForm.dtl"/>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentTicketTemplateList.dtl"/>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/TicketFromTemplate.dtl"/>
+        <File Permission="644" Location="Kernel/System/TicketTemplate.pm"/>
+        <File Permission="644" Location="Kernel/System/TicketTemplate/Article.pm"/>
+        <File Permission="644" Location="var/httpd/htdocs/js/TicketTemplate.Form.js"/>
+    </Filelist>
+    <DatabaseInstall Type="post">
+        <TableCreate Name="ps_tickettemplate">
+            <Column Name="id" Required="true" PrimaryKey="true" Type="INTEGER" AutoIncrement="true" />
+            <Column Name="name" Required="true" Size="250" Type="VARCHAR"/>
+            <Column Name="comments" Required="false" Size="500" Type="VARCHAR"/>
+            <Column Name="template" Required="true" Size="500" Type="VARCHAR" />
+            <Column Name="ticket_type" Required="true" Size="250" Type="VARCHAR"/>
+            <Column Name="create_by" Required="true" Type="INTEGER"/>
+            <Column Name="create_time" Required="true" Type="DATE"/>
+            <Unique Name="ps_tickettemplate_name">
+                <UniqueColumn Name="name" />
+            </Unique>
+            <ForeignKey ForeignTable="system_user">
+                <Reference Local="create_by" Foreign="id" />
+            </ForeignKey>
+        </TableCreate>
+    </DatabaseInstall>
+    <DatabaseUninstall Type="pre">
+        <TableDrop Name="ps_tickettemplate"/>
+    </DatabaseUninstall>
+    <IntroInstall Lang="de" Type="pre">
+    <![CDATA[
+    ]]>
+    </IntroInstall>
+</otrs_package>

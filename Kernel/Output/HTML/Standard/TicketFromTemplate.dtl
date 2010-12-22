@@ -1,0 +1,26 @@
+# --
+# TicketFromTemplate.dtl - provides common HTML form for several masks
+# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# --
+# $Id: TicketFromTemplate.dtl,v 1.39 2010/06/17 17:28:14 en Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+<script type="text/javascript" src="$Config{"Frontend::WebPath"}js/TicketTemplate.Form.js"></script>
+<fieldset class="TableLike FixedLabel">
+
+    <label for="TemplateName">$Text{"Template"}:</label>
+    <div class="Field">
+        $Data{"TemplateSelect"}
+    </div>
+    <div class="Clear"></div>
+
+    <div class="Field">
+        <button onclick="TicketTemplate.Form.FillForm( $('#Template').val() );" value="$Text{"Apply"}">$Text{"Apply"}</button>
+    </div>
+    <div class="Clear"></div>
+
+</fieldset>

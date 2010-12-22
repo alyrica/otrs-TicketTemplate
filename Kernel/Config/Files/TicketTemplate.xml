@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<otrs_config version="1.0" init="Application">
+    <CVS>$Id: PerlServicesCourses.xml,v 1.12 2008/03/10 12:57:42 mh Exp $</CVS>
+    <ConfigItem Name="Frontend::Module###AgentTicketTemplate" Required="1" Valid="1">
+        <Description Translatable="1">Activates the AgentTicketTemplate module for the frontend.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Description>Ticket Template</Description>
+                <Title>Ticket template list</Title>
+                <NavBarName>Ticket</NavBarName>
+                <NavBar>
+                    <Description>Ticket Template List</Description>
+                    <Name>Ticket Template List</Name>
+                    <Image>overview.png</Image>
+                    <Link>Action=AgentTicketTemplate</Link>
+                    <Type></Type>
+                    <Block></Block>
+                    <NavBar>Ticket</NavBar>
+                    <AccessKey></AccessKey>
+                    <Prio>1100</Prio>
+                </NavBar>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="Ticket::Frontend::MenuModule###999-Template" Required="0" Valid="1">
+        <Description Translatable="1">Shows a link in the menu to go back in the ticket zoom view of the agent interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::Ticket::MenuModule</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::TicketMenuGeneric</Item>
+                <Item Key="Name">Template</Item>
+                <Item Key="Description">Create Template</Item>
+                <Item Key="Action"></Item>
+                <Item Key="Link">Action=AgentTicketTemplate;Subaction=ShowForm;TicketID=$QData{"TicketID"}</Item>
+                <Item Key="Target">PopUp</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="Frontend::Output::FilterContent###TicketTemplate" Required="0" Valid="1">
+        <Description Translatable="1">Activate TicketTemplate output filter.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Outputfilter</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::OutputFilterTicketTemplate</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="TicketTemplate::Field###State" Required="0" Valid="1">
+        <Description Translatable="1">Allow the State field to be used in a ticket template.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Template::Fields</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Name">StateID</Item>
+                <Item Key="Label">State</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="TicketTemplate::Field###Queue" Required="0" Valid="1">
+        <Description Translatable="1">Allow the Queue field to be used in a ticket template.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Template::Fields</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Name">QueueID</Item>
+                <Item Key="Label">Queue</Item>
+                <Item Key="HTML">Dest</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="TicketTemplate::Field###CC" Required="0" Valid="1">
+        <Description Translatable="1">Allow the CC field to be used in a ticket template.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Template::Fields</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Name">ArticleCc</Item>
+                <Item Key="Label">CC</Item>
+                <Item Key="Module">Kernel::System::TicketTemplate::Article</Item>
+                <Item Key="HTML">Cc</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="TicketTemplate::Field###Owner" Required="0" Valid="1">
+        <Description Translatable="1">Allow the Owner field to be used in a ticket template.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Template::Fields</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Name">OwnerID</Item>
+                <Item Key="Label">Owner</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="TicketTemplate::Field###Subject" Required="0" Valid="1">
+        <Description Translatable="1">Allow the Subject field to be used in a ticket template.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Template::Fields</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Name">Title</Item>
+                <Item Key="Label">Subject</Item>
+                <Item Key="HTML">Subject</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="TicketTemplate::Field###Body" Required="0" Valid="1">
+        <Description Translatable="1">Allow the Body field to be used in a ticket template.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Template::Fields</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Name">ArticleBody</Item>
+                <Item Key="Label">Body</Item>
+                <Item Key="Module">Kernel::System::TicketTemplate::Article</Item>
+                <Item Key="HTML">RichText</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="TicketTemplate::Field###ArticleType" Required="1" Valid="1">
+        <Description Translatable="1">Allow the ArticleType field to be used in a ticket template.</Description>
+        <Group>TicketTemplate</Group>
+        <SubGroup>Template::Fields</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Name">ArticleType</Item>
+                <Item Key="Label"></Item>
+                <Item Key="Module">Kernel::System::TicketTemplate::Article</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+</otrs_config>
