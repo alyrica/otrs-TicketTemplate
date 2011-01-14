@@ -29,17 +29,39 @@ TicketTemplate.Form = (function (TargetNS) {
      * @return nothing
      */
     TargetNS.FillForm = function (SelectValue) {
-        var Infos = SelectValue.replace( /\d+\|\|/, '' );
+        var URL = Core.Config.Get('Baselink');
 
-        // parse json
-        var JsonObject = jQuery.parseJSON( Infos );
+        jQuery.ajax({
+            url: URL,
+            data: {
+                Action: 'AgentTicketTemplate',
+                Subaction: 'TemplateAsJson',
+                TemplateID: SelectValue
+            },
+            dataType: 'json',
+            success: function (Response){
+                if ( !Response ) {
+                    Core.Exception.Throw('Invalid JSON from ' + URL, 'CommunicationError');
+                }
+                else {
+                    jQuery.each( Response, function(i, val){
+                        var FieldName  = val["Field"];
+                        var FieldValue = val["Value"];
 
-        jQuery.each( JsonObject, function(i, val){
-            var FieldName  = val["Field"];
-            var FieldValue = val["Value"];
-
-            $('#' + FieldName).val( FieldValue );
-        }); 
+                        // special handling for body if richtext is enabled
+                        if ( FieldName == 'RichText' && RichTextActivated ) {
+                            CKEDITOR.instances.RichText.setData( val["Value"] );
+                        }
+                        else {
+                            $('#' + FieldName).val( FieldValue );
+                        }
+                    });
+                }
+            },
+            error: function() {
+                Core.Exception.Throw('Error during AJAX communication', 'CommunicationError');
+            }
+        });
     };
 
     return TargetNS;

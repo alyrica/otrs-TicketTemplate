@@ -21,6 +21,9 @@
                     <AccessKey></AccessKey>
                     <Prio>1100</Prio>
                 </NavBar>
+                <Loader>
+                  <JavaScript>Core.Agent.TicketAction.js</JavaScript>
+                </Loader>
             </FrontendModuleReg>
         </Setting>
     </ConfigItem>
@@ -36,6 +39,7 @@
                 <Item Key="Action"></Item>
                 <Item Key="Link">Action=AgentTicketTemplate;Subaction=ShowForm;TicketID=$QData{"TicketID"}</Item>
                 <Item Key="Target">PopUp</Item>
+                <Item Key="PopupType">TicketAction</Item>
             </Hash>
         </Setting>
     </ConfigItem>

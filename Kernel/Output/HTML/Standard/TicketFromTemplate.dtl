@@ -9,9 +9,6 @@
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
-<script type="text/javascript" src="$Config{"Frontend::WebPath"}js/TicketTemplate.Form.js"></script>
-<fieldset class="TableLike FixedLabel">
-
     <label for="TemplateName">$Text{"Template"}:</label>
     <div class="Field">
         $Data{"TemplateSelect"}
@@ -22,5 +19,3 @@
         <button onclick="TicketTemplate.Form.FillForm( $('#Template').val() );" value="$Text{"Apply"}">$Text{"Apply"}</button>
     </div>
     <div class="Clear"></div>
-
-</fieldset>

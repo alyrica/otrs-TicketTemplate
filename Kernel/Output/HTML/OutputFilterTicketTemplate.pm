@@ -96,7 +96,7 @@ sub Run {
     my %TemplateData;
     for my $TemplateID ( keys %Templates ) {
         my %Template = $Self->{TemplateObject}->TemplateGet( TemplateID => $TemplateID );
-        $TemplateData{ $TemplateID . '||' . $Template{Template} } = $Template{TemplateName};
+        $TemplateData{$TemplateID} = $Template{TemplateName};
     }
 
     my $TemplateSelect = $Self->{LayoutObject}->BuildSelection(
@@ -114,7 +114,16 @@ sub Run {
     );
 
     # include the fred output in the original output
-    ${ $Param{Data} } =~ s/(<div\s+class="ContentColumn">)/$1\n$Output\n/mx;
+    ${ $Param{Data} } =~ s{(<fieldset\s+class="TableLike">)}{$1\n$Output\n}mx;
+
+    my $JSPath      = $Self->{ConfigObject}->Get('Frontend::WebPath');
+    my $UseRichText = $Self->{ConfigObject}->Get('Frontend::RichText') ? ' = 1' : '';
+    my $JSDirective = qq~
+        <script type="text/javascript">var RichTextActivated$UseRichText;</script>
+        <script type="text/javascript" src="${JSPath}js/TicketTemplate.Form.js"></script>
+    ~;
+
+    ${ $Param{Data} } =~ s{</body>}{$JSDirective</body>}xms;
 
     return 1;
 }

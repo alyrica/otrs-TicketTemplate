@@ -115,6 +115,18 @@ sub Run {
             OP => 'Action=$Env{"Action"}',
         );
     }
+    elsif ( $Self->{Subaction} eq 'TemplateAsJson' ) {
+        my %TemplateData = $Self->{TemplateObject}->TemplateGet(
+            TemplateID => $GetParam{TemplateID},
+        );
+
+       return $Self->{LayoutObject}->Attachment(
+           ContentType => 'application/json; charset=' . $Self->{LayoutObject}->{Charset},
+           Content     => $TemplateData{Template} || '',
+           Type        => 'inline',
+           NoCache     => 0,
+       );
+    }
     else {
 
         # show list of templates
