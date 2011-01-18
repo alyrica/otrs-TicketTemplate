@@ -272,6 +272,11 @@ sub _SaveTemplate {
         Comment      => $Param{Comment},
         UserID       => $Self->{UserID},
     );
+
+    return q~<script type="text/javascript">//<![CDATA[
+        window.opener.Core.UI.Popup.FirePopupEvent('Reload');
+        window.close();
+        //]]></script>~;
 }
 
 1;
