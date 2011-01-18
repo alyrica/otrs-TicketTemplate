@@ -15,6 +15,8 @@ use strict;
 use warnings;
 
 use Kernel::System::TicketTemplate;
+use Kernel::System::DB;
+use Kernel::System::Time;
 
 use vars qw($VERSION);
 $VERSION = qw($Revision: 1.26 $) [1];
@@ -41,13 +43,15 @@ sub new {
     bless( $Self, $Type );
 
     # get needed objects
-    for my $Object (qw(MainObject ConfigObject LogObject LayoutObject EncodeObject DBObject TimeObject)) {
+    for my $Object (qw(MainObject ConfigObject LogObject LayoutObject EncodeObject)) {
         $Self->{$Object} = $Param{$Object} || die "Got no $Object!";
     }
 
     $Self->{Action} = $Param{Action};
 
     # create needed objects
+    $Self->{DBObject}       = Kernel::System::DB->new( %{$Self} );
+    $Self->{TimeObject}     = Kernel::System::Time->new( %{$Self} );
     $Self->{TemplateObject} = Kernel::System::TicketTemplate->new( %{$Self} );
 
     return $Self;
