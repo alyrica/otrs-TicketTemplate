@@ -229,8 +229,10 @@ sub _SaveTemplate {
         $Error = 1;
     }
 
-    # TODO: Check if name is already in use
-    # TODO: close window after successful submit
+    if ( $Name && $Self->{TemplateObject}->TemplateExists( TemplateName => $Name ) ) {
+        $Param{TemplateNameInvalid} = 'ServerError';
+        $Error = 1;
+    }
 
     # get all fields that are selected for the template
     my @Fields = $Self->{ParamObject}->GetArray( Param => 'TemplateFields' );
