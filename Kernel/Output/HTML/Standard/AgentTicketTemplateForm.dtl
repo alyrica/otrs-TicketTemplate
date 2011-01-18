@@ -38,7 +38,7 @@
     
                 <label for="Comment">$Text{"Comment"}:</label>
                 <div class="Field">
-                    <input type="text" id="Comment" name="Comment" value="$QData{"TemplateName"}" class="W75pc" />
+                    <input type="text" id="Comment" name="Comment" value="$QData{"Comment"}" class="W75pc" />
                 </div>
                 <div class="Clear"></div>
     
