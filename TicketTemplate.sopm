@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
     <Name>TicketTemplate</Name>
-    <Version>0.1.92</Version>
+    <Version>0.1.94</Version>
     <Framework>3.0.x</Framework>
     <Vendor>Renee Baecker, Perl-Services.de</Vendor>
     <URL>http://perl-services.de/</URL>
@@ -10,7 +10,7 @@
     <Description Lang="de">Ein Modul, um Ticket Templates und darauf basierende Tickets zu erstellen.</Description>
     <Filelist>
         <File Permission="644" Location="Kernel/Config/Files/TicketTemplate.xml"/>
-        <!-- <File Permission="644" Location="Kernel/Language/de_TicketTemplate.pm"/> -->
+        <File Permission="644" Location="Kernel/Language/de_TicketTemplate.pm"/>
         <File Permission="644" Location="Kernel/Modules/AgentTicketTemplate.pm"/>
         <File Permission="644" Location="Kernel/Output/HTML/OutputFilterTicketTemplate.pm"/>
         <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentTicketTemplateForm.dtl"/>

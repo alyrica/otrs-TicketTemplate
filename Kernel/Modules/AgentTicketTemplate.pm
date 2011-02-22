@@ -131,6 +131,7 @@ sub Run {
 
         # show list of templates
         my $Output = $Self->{LayoutObject}->Header();
+        $Output   .= $Self->{LayoutObject}->NavigationBar();
         $Output   .= $Self->_TemplateList( %GetParam );
         $Output   .= $Self->{LayoutObject}->Footer();
         return $Output;
