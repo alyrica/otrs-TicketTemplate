@@ -312,7 +312,7 @@ sub TemplateList {
     }
 
     my $WhereString = join ' AND ', @Where;
-    $WhereString  ||= 1;
+    $WhereString  ||= '1 = 1';
 
     # sql
     return if !$Self->{DBObject}->Prepare(
