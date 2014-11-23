@@ -1,8 +1,6 @@
 # --
 # Kernel/System/TicketTemplate.pm - All Template related functions should be here eventually
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
-# --
-# $Id: Template.pm,v 1.83 2010/09/01 07:50:22 bes Exp $
+# Copyright (C) 2012-2014 Perl-Services.de, http://perl-services.de
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -16,8 +14,7 @@ use warnings;
 
 use Kernel::System::Ticket;
 
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.83 $) [1];
+our $VERSION = 0.03;
 
 =head1 NAME
 
@@ -428,16 +425,9 @@ sub TemplateDataGet {
 
 =head1 TERMS AND CONDITIONS
 
-This software is part of the OTRS project (L<http://otrs.org/>).
-
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (AGPL). If you
 did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =cut
 
-=head1 VERSION
-
-$Revision: 1.83 $ $Date: 2010/09/01 07:50:22 $
-
-=cut
