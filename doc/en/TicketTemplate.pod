@@ -25,6 +25,10 @@ Unfortunately I have to pay some bills (like everyone else) ;-) So I have to sel
 L<TicketTemplates|http://feature-addons.de/otrs/Ticket/TicketTemplates> is not available on OPAR. But I plan
 to put it on OPAR sometime in 2015.
 
+=head1 REPOSITORY AND BUGTRACKER
+
+The code and a bugtracker is available at L<http://github.com/reneeb/otrs-TicketTemplate.git>.
+
 =head1 AUTHOR AND LICENSE
 
 This add on is licensed under the terms of AGPL 3.0
