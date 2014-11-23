@@ -1,0 +1,33 @@
+=head1 NAME
+
+TicketTemplate
+
+=head1 DEPRECATION
+
+This module is deprecated and will not get any update - unless further development is sponsored.
+Instead a feature addon to buy is available from Feature-Addons.de: L<http://feature-addons.de/otrs/Ticket/TicketTemplates>.
+
+=head1 DESCRIPTION
+
+This free add on adds a new item to the ticket menu. When you click on that menu item, you can choose
+what information of the existing ticket should be added to the template.
+
+This can be for example the queue, the priority and so on. Then a dropdown is added to the "new ticket"
+forms (AgentTicketPhone and AgentTicketEmail) where the agent can choose what template should be used.
+As soon a template is chosen, the values stored in the template are set in the form.
+
+=head1 WHY IS IT DEPRECATED AND WHY IS TICKETTEMPLATES NOT ON OPAR?
+
+This module is deprecated as most OTRS users don't want to create templates based on existing templates,
+but define new templates in the admin area.
+
+Unfortunately I have to pay some bills (like everyone else) ;-) So I have to sell some of my modules, hence 
+L<TicketTemplates|http://feature-addons.de/otrs/Ticket/TicketTemplates> is not available on OPAR. But I plan
+to put it on OPAR sometime in 2015.
+
+=head1 AUTHOR AND LICENSE
+
+This add on is licensed under the terms of AGPL 3.0
+
+Renee Baecker, C<< <info@feature-addons.de> >>
+
