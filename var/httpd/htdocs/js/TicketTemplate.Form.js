@@ -24,7 +24,7 @@ TicketTemplate.Form = (function (TargetNS) {
     /**
      * @function
      * @description
-     *      This function fills the form with the info from template 
+     *      This function fills the form with the info from template
      * @param JsonData - the tickettemplate as jsondata
      * @return nothing
      */
@@ -50,7 +50,10 @@ TicketTemplate.Form = (function (TargetNS) {
 
                         // special handling for body if richtext is enabled
                         if ( FieldName == 'RichText' && RichTextActivated ) {
-                            CKEDITOR.instances.RichText.setData( val["Value"] );
+                            // preserve newlines in source by replacing \n with <br> as setData ignores \n
+                            var modValue = val["Value"].replace(/\n/g,'<br />');
+                            console.log(modValue);
+                            CKEDITOR.instances.RichText.setData( modValue );
                         }
                         else {
                             $('#' + FieldName).val( FieldValue );
